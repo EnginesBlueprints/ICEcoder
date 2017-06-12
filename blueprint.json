@@ -1,1 +1,170 @@
-{"software":{"name":"icecoder","major":null,"minor":1,"release_level":"Alpha","patch":null,"license_name":"ice_14_day_trial_","license_label":"ICE 14 day Trial ","license_sourceurl":"https://icecoder.net/buy-code","full_title":"ICEcoder","short_title":"ICEcoder","description":"ICEcoder is a browser based code editor, which provides a modern approach to building websites.","icon_url":"https://icecoder.net/images/icecoder.png","home_page_url":"https://icecoder.net/","support_page_url":"","about":"","language":"php","framework":"apache_php","deployment_type":"web","web_root_directory":"","first_run_url":"","publisher":"engines","blocking_worker_name":null,"required_memory":64,"recommended_memory":128,"http_protocol":"http_and_https","framework_port_overide":null,"custom_start_script":"#/bin/bash\r\ncd /home/app\r\nif ! test -z $default_site\r\n  then\r\n    if test $default_site == website\r\n      then\r\n        cp .htaccess_website .htaccess\r\n     elif test $default_site == editor\r\n        then\r\n        cp .htaccess_editor .htaccess\r\n    fi\r\n fi\r\n","custom_install_script":"","custom_post_install_script":"","service_configurations":[{"publisher_namespace":"EnginesSystem","type_path":"filesystem/local/filesystem","variables":{"service_name":"_Engines_Builder(engine_name)","group":"_Engines_Builder(group_uid)","user":"_Engines_Builder(data_uid)","volume_src":" ","permissions":"rw","engine_path":"/home/app/files"}},{"publisher_namespace":"EnginesSystem","type_path":"database/sql/mysql","variables":{"full_access":"0","name":"_Engines_Builder(engine_name)","database_host":"_Engines_System(mysql_host)","database_name":"_Engines_Builder(engine_name)","db_username":"_Engines_Builder(engine_name)","db_password":"_Engines_System(random(10))","db_flavor":"mysql2","collation":"utf8_general_ci"}},{"publisher_namespace":"EnginesSystem","type_path":"filesystem/service/ftp","variables":{"volume":"_Engines_Environment(volume_name)","folder":"/","username":"_Engines_Builder(engine_name)","password":"_Engines_System(random(8))","rw_access":"true","ftp_gid":"_Engines_Builder(data_gid)","non_secure_access":"0"}}],"persistent_directories":[],"replacement_strings":[],"persistent_files":[],"installed_packages":[{"name":"ICEcoder","source_url":"https://github.com/mattpass/ICEcoder","destination":"ICEcoder","extraction_command":"git","path_to_extracted":"ICEcoder"}],"system_packages":[],"workers":[],"ports":[],"external_repositories":[],"rake_tasks":[],"template_files":[{"title":".htaccess_website","path":"/home/app/.htaccess_website","content":"#make the website the default site\r\n#RedirectMatch 301 /(.*) /files/$1\r\nRewriteEngine On\r\nRewriteRule ^$ /files [L]\r\n"},{"title":".htaccess_editor","path":"/home/app/.htaccess_editor","content":"#make the editor the default site\r\n#RedirectMatch 301 /(.*) /ICEcoder/$1\r\nRewriteEngine On\r\nRewriteRule ^$ /ICEcoder [L]"}],"file_write_permissions":[{"path":"ICEcoder/lib","recursive":true},{"path":"ICEcoder/plugins","recursive":false},{"path":"ICEcoder/tmp","recursive":true},{"path":"ICEcoder/test","recursive":false},{"path":"ICEcoder/backup","recursive":false},{"path":".htaccess","recursive":false}],"custom_php_inis":[],"apache_htaccess_files":[],"apache_httpd_configurations":[],"modules":[{"os_package":"","module_name":"rewrite","module_type":"apache"}],"variables":[{"name":"default_site","value":"editor","label":"default site","field_type":"text","select_collection":"","tooltip":"editor|website","hint":"chose default site ICE editor or pages under site","placeholder":"editor|website","comment":"should be a select collection","regex_validator":"","regex_invalid_message":"","mandatory":false,"ask_at_build_time":true,"build_time_only":false,"immutable":false}],"component_sources":[],"component_path":"","extract_components":false,"installation_report_template":"","continuous_deployment":false,"database_seed_file":"","actionators":{}}}
+{
+  "schema": {
+    "type": "app_blueprint",
+    "version": {
+      "major": 1,
+      "minor": 0
+    },
+    "origin": "Engines Developer Studio 0.2"
+  },
+  "metadata": {
+    "blueprint": {
+      "version": {
+        "major": 0,
+        "minor": 1,
+        "level": "alpha",
+        "patch": 0
+      }
+    },
+    "software": {
+      "display": {
+        "title": "ICEcoder",
+        "label": "ICEcoder",
+        "description": "ICEcoder is a browser based code editor, which provides a modern approach to building websites.",
+        "url": "https://icecoder.net/"
+      },
+      "license": {
+        "label": "ICE 14 day Trial ",
+        "url": "https://icecoder.net/buy-code"
+      }
+    },
+    "timestamp": "2017-06-12 23:20:25 UTC"
+  },
+  "software": {
+    "base": {
+      "name": "icecoder",
+      "framework": "apache_php",
+      "deployment_type": "web",
+      "http_protocol": "http_and_https",
+      "memory": {
+        "required": 64,
+        "recommended": 128
+      }
+    },
+    "scripts": {
+      "start": {
+        "language": "sh",
+        "content": "#/bin/bash\r\ncd /home/app\r\nif ! test -z $default_site\r\n  then\r\n    if test $default_site == website\r\n      then\r\n        cp .htaccess_website .htaccess\r\n     elif test $default_site == editor\r\n        then\r\n        cp .htaccess_editor .htaccess\r\n    fi\r\n fi\r\n"
+      },
+      "install": {
+        "language": "sh"
+      },
+      "post_install": {
+        "language": "sh"
+      },
+      "shutdown": {
+        "language": "sh"
+      }
+    },
+    "installed_packages": [
+      {
+        "name": "ICEcoder",
+        "source_url": "https://github.com/mattpass/ICEcoder",
+        "destination": "ICEcoder",
+        "extraction_command": "git",
+        "path_to_extracted": "ICEcoder"
+      }
+    ],
+    "required_modules": [
+      {
+        "name": "rewrite",
+        "type": "apache"
+      }
+    ],
+    "service_configurations": [
+      {
+        "publisher_namespace": "EnginesSystem",
+        "type_path": "filesystem/local/filesystem",
+        "variables": {
+          "service_name": "_Engines_Builder(engine_name)",
+          "group": "_Engines_Builder(group_uid)",
+          "user": "_Engines_Builder(data_uid)",
+          "volume_src": " ",
+          "permissions": "rw",
+          "engine_path": "/home/app/files"
+        }
+      },
+      {
+        "publisher_namespace": "EnginesSystem",
+        "type_path": "database/sql/mysql",
+        "variables": {
+          "full_access": "0",
+          "name": "_Engines_Builder(engine_name)",
+          "database_host": "_Engines_System(mysql_host)",
+          "database_name": "_Engines_Builder(engine_name)",
+          "db_username": "_Engines_Builder(engine_name)",
+          "db_password": "_Engines_System(random(10))",
+          "db_flavor": "mysql2",
+          "collation": "utf8_general_ci"
+        }
+      },
+      {
+        "publisher_namespace": "EnginesSystem",
+        "type_path": "filesystem/service/ftp",
+        "variables": {
+          "folder": "/",
+          "volume": "_Engines_Environment(volume_name)",
+          "username": "_Engines_Builder(engine_name)",
+          "password": "_Engines_System(random(8))",
+          "rw_access": "true",
+          "ftp_gid": "_Engines_Builder(data_gid)"
+        }
+      }
+    ],
+    "environment_variables": [
+      {
+        "name": "default_site",
+        "value": "editor",
+        "mandatory": true,
+        "ask_at_build_time": true,
+        "input": {
+          "type": "text",
+          "label": "default site",
+          "title": "editor|website",
+          "hint": "chose default site ICE editor or pages under site",
+          "placeholder": "editor|website",
+          "collection": {
+            "include_blank": true
+          }
+        }
+      }
+    ],
+    "template_files": [
+      {
+        "path": "/home/app/.htaccess_website",
+        "language": "text",
+        "content": "#make the website the default site\r\n#RedirectMatch 301 /(.*) /files/$1\r\nRewriteEngine On\r\nRewriteRule ^$ /files [L]\r\n"
+      },
+      {
+        "path": "/home/app/.htaccess_editor",
+        "language": "text",
+        "content": "#make the editor the default site\r\n#RedirectMatch 301 /(.*) /ICEcoder/$1\r\nRewriteEngine On\r\nRewriteRule ^$ /ICEcoder [L]"
+      }
+    ],
+    "database_seed": {
+      "language": "text"
+    },
+    "file_write_permissions": [
+      {
+        "path": "ICEcoder/lib",
+        "recursive": true
+      },
+      {
+        "path": "ICEcoder/plugins"
+      },
+      {
+        "path": "ICEcoder/tmp",
+        "recursive": true
+      },
+      {
+        "path": "ICEcoder/test"
+      },
+      {
+        "path": "ICEcoder/backup"
+      },
+      {
+        "path": ".htaccess"
+      }
+    ]
+  }
+}
