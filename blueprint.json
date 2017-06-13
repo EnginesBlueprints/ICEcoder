@@ -28,7 +28,7 @@
         "url": "https://icecoder.net/buy-code"
       }
     },
-    "timestamp": "2017-06-13 04:46:09 UTC"
+    "timestamp": "2017-06-13 04:47:20 UTC"
   },
   "software": {
     "base": {
@@ -116,7 +116,6 @@
         "name": "default_site",
         "value": "editor",
         "mandatory": true,
-        "immutable": true,
         "ask_at_build_time": true,
         "input": {
           "type": "select",
