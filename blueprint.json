@@ -28,7 +28,7 @@
         "url": "https://icecoder.net/buy-code"
       }
     },
-    "timestamp": "2018-12-19T10:22:46+11:00"
+    "timestamp": "2018-12-19T10:56:51+11:00"
   },
   "software": {
     "base": {
@@ -44,7 +44,7 @@
     "scripts": {
       "start": {
         "language": "sh",
-        "content": "#/bin/bash\r\ncd /home/app\r\nif ! test -z $default_site\r\n  then\r\n    if test $default_site == website\r\n      then\r\n        cp .htaccess_website .htaccess\r\n     elif test $default_site == editor\r\n        then\r\n        cp .htaccess_editor .htaccess\r\n    fi\r\n fi\r\n"
+        "content": "#/bin/bash\r\ncd /home/app\r\nif ! test -z $default_site\r\n  then\r\n    if test $default_site = website\r\n      then\r\n        cp .htaccess_website .htaccess\r\n     elif test $default_site = editor\r\n        then\r\n        cp .htaccess_editor .htaccess\r\n    fi\r\n fi\r\n"
       },
       "install": {
         "language": "sh"
@@ -175,7 +175,10 @@
               }
             }
           }
-        ]
+        ],
+        "script": {
+          "content": "#!/bin/sh\r\n\r\nif ! test -z $default_site \r\n then\r\n   if test $default_site = editor\r\n    then\r\n     cp .htaccess_website .htaccess\r\n   elif test $default_site = website\r\n    then\r\n     cp .htaccess_editor .htaccess\r\n   fi\r\nfi   "
+        }
       }
     ]
   }
