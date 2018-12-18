@@ -28,7 +28,7 @@
         "url": "https://icecoder.net/buy-code"
       }
     },
-    "timestamp": "2018-12-18T07:47:36+11:00"
+    "timestamp": "2018-12-19T09:09:02+11:00"
   },
   "software": {
     "base": {
@@ -166,6 +166,28 @@
       },
       {
         "path": ".htaccess"
+      }
+    ],
+    "actionators": [
+      {
+        "name": "default_site",
+        "label": "Set Default Site",
+        "return_type": "none",
+        "variables": [
+          {
+            "name": "default_site",
+            "input": {
+              "type": "select",
+              "title": "Default Site",
+              "collection": {
+                "items": {
+                  "editor": "Editor",
+                  "website": "Website"
+                }
+              }
+            }
+          }
+        ]
       }
     ]
   }
