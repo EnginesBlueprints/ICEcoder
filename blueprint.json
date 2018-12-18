@@ -28,7 +28,7 @@
         "url": "https://icecoder.net/buy-code"
       }
     },
-    "timestamp": "2018-12-19T09:09:02+11:00"
+    "timestamp": "2018-12-19T10:22:46+11:00"
   },
   "software": {
     "base": {
@@ -94,18 +94,6 @@
           "db_password": "_Engines_System(random(10))",
           "collation": "utf8_general_ci",
           "full_access": "0"
-        }
-      },
-      {
-        "publisher_namespace": "EnginesSystem",
-        "type_path": "filesystem/service/ftp",
-        "variables": {
-          "folder": "/",
-          "volume": "_Engines_Environment(volume_name)",
-          "username": "_Engines_Builder(engine_name)",
-          "password": "_Engines_System(random(8))",
-          "rw_access": "true",
-          "ftp_gid": "_Engines_Builder(data_gid)"
         }
       }
     ],
