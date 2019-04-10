@@ -28,7 +28,7 @@
         "url": "https://icecoder.net/buy-code"
       }
     },
-    "timestamp": "2019-04-10T18:15:57+10:00"
+    "timestamp": "2019-04-10T18:27:21+10:00"
   },
   "software": {
     "base": {
@@ -39,15 +39,18 @@
       "memory": {
         "required": 64,
         "recommended": 128
-      }
+      },
+      "installation_report": "When enabled the ICEcoder editor is availble at [https://_Engines_Environment(fqdn)/ICEcoder]\r\nmysql database connection details are as follows\r\ndatabase name \"_Engines_Builder(engine_name)\"\r\nmysql host _Engines_System(mysql_host)\"\r\nusername \"_Engines_Builder(engine_name)\"\r\npassword \"_Engines_System(random(10))\""
     },
     "scripts": {
       "start": {
         "language": "sh"
       },
       "install": {
-        "language": "sh",
-        "content": "!#/bin/sh\r\n\r\nmv /home/app/ICEcoder /home/fs/icecoder_src\r\n\r\nif test $editor_setting = enable\r\n then\r\n  if ! test -h /home/app/ICEcoder\r\n   then\r\n     ln -s /home/app/icecoder_src/ICEcoder /home/app/\r\n  fi\r\nelif test $editor_setting = disable\r\n then\r\n  if  test -h /home/app/ICEcoder\r\n   then\r\n     rm /home/app/ICEcoder\r\n  fi"
+        "language": "sh"
+      },
+      "first_run": {
+        "content": "!#/bin/sh\r\n\r\nmv /home/app/ICEcoder /home/fs/icecoder_src\r\n\r\nif test $editor_setting = enable\r\n then\r\n  if ! test -h /home/app/ICEcoder\r\n   then\r\n     ln -s /home/fs/icecoder_src/ICEcoder /home/app/\r\n  fi\r\nelif test $editor_setting = disable\r\n then\r\n  if  test -h /home/app/ICEcoder\r\n   then\r\n     rm /home/app/ICEcoder\r\n  fi"
       },
       "post_install": {
         "language": "sh"
@@ -176,7 +179,7 @@
           }
         ],
         "script": {
-          "content": "#!/bin/sh\r\n\r\nif test $editor_setting = enable\r\n then\r\n  if ! test -h /home/app/ICEcoder\r\n   then\r\n     ln -s /home/app/icecoder_src/ICEcoder /home/app/\r\n  fi\r\nelif test $editor_setting = disable\r\n then\r\n  if  test -h /home/app/ICEcoder\r\n   then\r\n     rm /home/app/ICEcoder\r\n  fi"
+          "content": "#!/bin/sh\r\n\r\nif test $editor_setting = enable\r\n then\r\n  if ! test -h /home/app/ICEcoder\r\n   then\r\n     ln -s /home/fs/icecoder_src/ICEcoder /home/app/\r\n  fi\r\nelif test $editor_setting = disable\r\n then\r\n  if  test -h /home/app/ICEcoder\r\n   then\r\n     rm /home/app/ICEcoder\r\n  fi\r\nfi  "
         }
       }
     ]
