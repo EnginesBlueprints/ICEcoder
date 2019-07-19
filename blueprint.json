@@ -28,7 +28,7 @@
         "url": "https://icecoder.net/buy-code"
       }
     },
-    "timestamp": "2019-04-10T18:27:21+10:00"
+    "timestamp": "2019-07-19T19:27:20+10:00"
   },
   "software": {
     "base": {
@@ -50,7 +50,7 @@
         "language": "sh"
       },
       "first_run": {
-        "content": "!#/bin/sh\r\n\r\nmv /home/app/ICEcoder /home/fs/icecoder_src\r\n\r\nif test $editor_setting = enable\r\n then\r\n  if ! test -h /home/app/ICEcoder\r\n   then\r\n     ln -s /home/fs/icecoder_src/ICEcoder /home/app/\r\n  fi\r\nelif test $editor_setting = disable\r\n then\r\n  if  test -h /home/app/ICEcoder\r\n   then\r\n     rm /home/app/ICEcoder\r\n  fi"
+        "content": "!#/bin/sh\r\n\r\n\r\n mv /home/app_src/ICEcoder /home/fs/icecoder_src\r\n\r\nif test $editor_setting = enable\r\n then\r\n  if ! test -h /home/app/ICEcoder\r\n   then\r\n     ln -s /home/fs/icecoder_src/ICEcoder /home/app/\r\n  fi\r\nelif test $editor_setting = disable\r\n then\r\n  if  test -h /home/app/ICEcoder\r\n   then\r\n     rm /home/app/ICEcoder\r\n  fi"
       },
       "post_install": {
         "language": "sh"
@@ -80,11 +80,13 @@
         "type_path": "filesystem/local/filesystem",
         "variables": {
           "service_name": "_Engines_Builder(engine_name)",
-          "group": "_Engines_Builder(group_uid)",
-          "user": "_Engines_Builder(data_uid)",
           "volume_src": " ",
+          "engine_path": "/home/app/",
           "permissions": "rw",
-          "engine_path": "/home/app/"
+          "user": "_Engines_Builder(data_uid)",
+          "group": "_Engines_Builder(group_uid)",
+          "fw_user": "_Engines_Builder(cont_user_id)",
+          "exclude_from_backup": "false"
         }
       },
       {
@@ -108,7 +110,9 @@
           "engine_path": "",
           "permissions": "rw",
           "user": "_Engines_Builder(data_uid)",
-          "group": "_Engines_Builder(data_gid)"
+          "group": "_Engines_Builder(data_gid)",
+          "fw_user": "_Engines_Builder(cont_user_id)",
+          "exclude_from_backup": "false"
         }
       }
     ],
